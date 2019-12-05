@@ -53,19 +53,20 @@ Shader "MyShader/Feather"
 			
 		ENDCG
        
-		Pass
-        {
-            CGPROGRAM    
-			sampler2D _BlendTex;
-			fixed4 frag (v2f i) : SV_Target
-            {              
-                return  tex2D(_BlendTex, i.uv);
-            }
-            ENDCG
-        }
+		//Pass
+  //      {
+  //          CGPROGRAM    
+		//	sampler2D _BlendTex;
+		//	fixed4 frag (v2f i) : SV_Target
+  //          {              
+  //              return  tex2D(_BlendTex, i.uv);
+  //          }
+  //          ENDCG
+  //      }
 		Pass
         { 
 			Blend[_SrcBlend][_DstBlend]
+			
             CGPROGRAM 
 			sampler2D _MainTex;
 			sampler2D _NormalTex;

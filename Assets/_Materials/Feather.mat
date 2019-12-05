@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Feather
   m_Shader: {fileID: 4800000, guid: 32071bf9b10c88e44b1f7c7c213270b7, type: 3}
-  m_ShaderKeywords: MASK_PLANE
+  m_ShaderKeywords: MASK_PLANE _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,11 +20,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BlendTex:
-        m_Texture: {fileID: 2800000, guid: fec59211c9d47f348952989b0d5f598d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 03f294ce63e1018428b93895612155d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2f1151f3b40e6524781ab276955c84f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f1d7ca1d628a72440a29eec86b74e4bb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 675cb6411f36989469f42a1a69297d71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -79,11 +79,11 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 10
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CutAxis: {r: 0, g: 0, b: 1, a: 0}
-    - _CutCenter: {r: 0, g: 0.59, b: -0.07, a: 0}
+    - _CutCenter: {r: 0, g: 0.59, b: -0.509, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
