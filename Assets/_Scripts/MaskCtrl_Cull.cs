@@ -1,13 +1,13 @@
-﻿/*文件名：MaskCtrl.cs
+﻿/*文件名：MaskCtrl_Cull.cs
  * 作者：YZY
  * 说明：Cull的遮罩控制器
- * 上次修改时间：2019/12/4 17：01：30 *
+ * 上次修改时间：2019/12/4 
  * */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [ExecuteInEditMode]
-public class MaskCtrl : MonoBehaviour
+public class MaskCtrl_Cull : MonoBehaviour
 {
     public MaskType maskType=MaskType.Plane;
     public float radius;
