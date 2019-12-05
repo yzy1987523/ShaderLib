@@ -4,3 +4,5 @@
 ![Cull1](Assets/_Pictures/Cull1.png)
 ### 球形裁切
 ![Cull2](Assets/_Pictures/Cull2.png)
+## 2.Geometry Shader：几何着色器
+![Geometry](Assets/_Pictures/Geometry.png)
