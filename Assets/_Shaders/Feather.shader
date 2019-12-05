@@ -65,15 +65,15 @@ Shader "MyShader/Feather"
   //      }
 		Pass
         { 
-			Blend[_SrcBlend][_DstBlend]
-			
+			//Blend[_SrcBlend][_DstBlend]
+			Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM 
 			sampler2D _MainTex;
 			sampler2D _NormalTex;
 			fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-				col.a=col.a*cutPosition(i.worldPos.xyz)*_CutThreshold;
+				col.a= saturate( col.a*cutPosition(i.worldPos.xyz)*_CutThreshold);
                 return col;
             }
             ENDCG
