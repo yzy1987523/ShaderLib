@@ -13,11 +13,12 @@ Shader "MyShader/Depth"
     //子着色器    
     SubShader  
     {     
-		
+		ZWrite off
+		ZTest Greater
 
 		Pass  
 		{ 
-				
+				Color(1,0,0,1)
 		}
 	}  
 }  
