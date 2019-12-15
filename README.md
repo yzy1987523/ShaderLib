@@ -7,4 +7,5 @@
 ## 2.Geometry Shader：几何着色器
 ![Geometry](Assets/_Pictures/Geometry.png)
 ## 3.Cursh Shader
-![Geometry](Assets/_Pictures/Crush.png)
+![Geometry](Assets/_Pictures/Crush1.png)
+![Geometry](Assets/_Pictures/Crush2.png)
