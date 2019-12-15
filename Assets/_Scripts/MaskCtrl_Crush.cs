@@ -24,7 +24,19 @@ public class MaskCtrl_Crush : MonoBehaviour
         for (int i = 0; i < mats.Count; i++)
         {
             SetMaterial(mats[i]);
-        }       
+        }
+        if (Application.isPlaying)
+        {
+            if (transform.position.x >= height)
+            {
+                changeDir = true;
+            }
+            else if (transform.position.x <= -height)
+            {
+                changeDir = false;
+            }
+            transform.Translate((changeDir ? -1 : 1) * Vector3.right * Time.deltaTime);
+        }
     }
     void SetMaterial(Material _mat)
     {

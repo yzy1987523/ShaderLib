@@ -42,14 +42,18 @@ Shader "MyShader/Crush"
 			};
 
 			float cutPosition(float3 pos) {
-				float dir = length(pos - _CutCenter);
+				float dir =( length(pos - _CutCenter));
 				//if(dir> _CutThreshold)
 				return dir;
 				//return 1;
 			}
 			float3 twist(float3 p,float3 center, float power) {
-				float s = sin(power*p.x);
-				float c = cos(power*p.z);
+				float t = _Time.y;
+				if (t > 360) {	
+					t -= 360;
+				}
+				float s = sin(power*p.x*t*0.03);
+				float c = cos(power*p.z*t*0.03);
 				//百度：旋转矩阵
 				float3x3 m = float3x3(
 					c, -s,0,
@@ -74,10 +78,18 @@ Shader "MyShader/Crush"
 				float power = cutPosition(center);
 				for (int i = 0; i < 3; i++) {
 					v2f o = v[i];
+					//if (power > _CutThreshold+1) {
+					//
+					//	v[i].vertex.xyz = twist(v[i].vertex.xyz, center, 1)+ center;
+					//	v[i].vertex.xyz += (center)*2;
+					//}
+					//else 
 					if (power > _CutThreshold) {
-						v[i].vertex.xyz = twist(v[i].vertex.xyz, center, 1);
-						v[i].vertex.xyz += (center - _CutCenter.xyz)*power;
+						v[i].vertex.xyz = twist(v[i].vertex.xyz, center, power) + center;
+						v[i].vertex.xyz += (center) *(power-_CutThreshold);
 					}
+
+					
 					o.vertex = UnityObjectToClipPos(v[i].vertex.xyz);
 					tristream.Append(o);
 				}
