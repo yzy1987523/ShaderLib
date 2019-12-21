@@ -1,9 +1,9 @@
-﻿/*文件名：Circle.shader
+﻿/*文件名：Line.shader
 作者：YZY
-说明：画圆
-上次修改时间：2019/12/17
+说明：动态的线条
+上次修改时间：2019/12/21
 */
-Shader "MyShader/Circle"
+Shader "MyShader/Line"
 {
 	Properties{
 		_MainTex("Texture", 2D) = ""{}
@@ -122,8 +122,13 @@ Shader "MyShader/Circle"
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				fixed4 col = step(length(i.uv-fixed2(0.5,0.5)),0.3);
-				return col;
+				fixed3 wave_color=fixed3(0,0,0);			
+			for (float j = 0.0; j < 10.0; j++) {
+				i.uv.y += (0.07 * sin(i.uv.x + j / 7.0 + _Time.y));
+				fixed wave_width = abs(1.0 / (150.0 * i.uv.y));
+				wave_color += fixed3(wave_width* 1.9, wave_width, wave_width * 1.5);
+			}			
+			return fixed4(wave_color,0);
 			}
 				ENDCG
 
@@ -133,22 +138,10 @@ Shader "MyShader/Circle"
 				CGPROGRAM
 
 			#pragma vertex vert
-	//#pragma geometry geom
-	#pragma fragment frag
+			#pragma fragment frag
 
 					ENDCG
 			}
-
-			//	Pass
-			//	{
-			//		Cull Front
-			//		CGPROGRAM
-			//		#pragma vertex vert
-			//		#pragma geometry geom
-			//		#pragma fragment frag
-
-			//ENDCG
-			//	}
 		}
 
 }
