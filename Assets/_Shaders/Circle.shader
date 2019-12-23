@@ -11,7 +11,7 @@ Shader "MyShader/Circle"
 		_Emission("Emission",Range(0,1)) = 0.5
 		_CutAxis("Cut Axis", Vector) = (0,1,0,0)
 		_CutCenter("Cut Center", Vector) = (0,1,0,0)
-			_PlayerPos("PlayerPos", Vector) = (0,1,0,0)
+		_PlayerPos("PlayerPos", Vector) = (0,1,0,0)
 		_CutThreshold("Cut Threshold", Float) = 0.01
 		[Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend("Src Blend Mode", Float) = 1
 		[Enum(UnityEngine.Rendering.BlendMode)] _DstBlend("Dst Blend Mode", Float) = 1
