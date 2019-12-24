@@ -9,3 +9,8 @@
 ## 3.Cursh Shader
 ![Geometry](Assets/_Pictures/Crush1.png)
 ![Geometry](Assets/_Pictures/Crush2.png)
+## 4.演算
+![Show](Assets/_Pictures/Line.png)
+![Show](Assets/_Pictures/Normal.png)
+![Show](Assets/_Pictures/Rot.png)
+![Show](Assets/_Pictures/Overlay.png)
