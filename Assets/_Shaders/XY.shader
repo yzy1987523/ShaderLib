@@ -48,15 +48,21 @@ Shader "MyShader/XY"
 			o.normal = v.normal;
 			return o;
 		}
-
+		fixed SinFun(fixed _x) {
+			return (_Width*(sin(_x/_X + _Time.y*5)) - _Y );
+		}
+		fixed EFun(fixed _x) {
+			return _X * exp(_Y*_x);
+		}
 		fixed4 frag(v2f i) : SV_Target
 		{ 
 			fixed4 col = tex2D(_MainTex, i.uv);
-		for (int j = 0; j < 5; j++) {
-			i.uv.y += ((_Y*sin((i.uv.x)*_X+j/7.0 + _Time.y))-0.1 );
-			fixed w = abs(1 / (_Width*i.uv.y));
+		//for (int j = 0; j < 5; j++) {
+			//i.uv.y += ((_Y*sin((i.uv.x)*_X+1/7.0 + _Time.y))-0.5 );
+		i.uv.y += EFun(i.uv.x);
+			fixed w = abs(1 / (150*i.uv.y));
 			col += (fixed4(w, w, w, w)*_Color);
-		}
+		//}
 			return col;
 		}
 		ENDCG

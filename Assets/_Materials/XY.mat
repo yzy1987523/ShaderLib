@@ -89,9 +89,9 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _Width: 57.09
-    - _X: 4
-    - _Y: 0.05
+    - _Width: -1.8
+    - _X: -0.1
+    - _Y: 2.21
     - _ZWrite: 1
     m_Colors:
     - _CloudColor: {r: 0.7024846, g: 0, b: 1, a: 1}
