@@ -81,6 +81,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Height: 10
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -88,14 +89,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Type: 4
     - _UVSec: 0
-    - _Width: -1.8
-    - _X: -0.1
-    - _Y: 2.21
+    - _Width: 10
+    - _X: 0
+    - _Y: 0
     - _ZWrite: 1
     m_Colors:
     - _CloudColor: {r: 0.7024846, g: 0, b: 1, a: 1}
-    - _Color: {r: 0.21960783, g: 0, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.11366502, b: 0.1509434, a: 1}
     - _Color1: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
     - _CutAxis: {r: 0, g: 0, b: 1, a: 0}
     - _CutCenter: {r: -0.4, g: 0, b: 0.26, a: 0}

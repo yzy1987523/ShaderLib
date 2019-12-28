@@ -7,11 +7,13 @@ Shader "MyShader/XY"
 {
 	Properties
 	{
-		_X("X",float) =0
+		_X("X",float) = 0
 		_Y("Y",float) = 0
-		_Width("Width",float)=1
+		_Width("Width",float) = 1
+		_Height("Height",float)=1
 		_MainTex("Texture", 2D) = ""{}
 		_Color("Color",Color) = (1,1,1,1)
+		[Enum(SIN,0,COS,1,TAN,2,EXP,3,TEST,4)] _Type("CurveType", Float) = 4
 	}
 	SubShader
 	{
@@ -20,11 +22,15 @@ Shader "MyShader/XY"
 			}
 		CGINCLUDE
 		#include "UnityCG.cginc"
+		//#pragma multi_compile _SIN _COS _X2 _X3??
 		float _X;
 		float _Y;
 		float _Width;
+		float _Height;
+		Float _Type;
 		fixed4 _Color;
 		sampler2D _MainTex;
+
 		struct appdata
 		{
 			float4 vertex : POSITION;
@@ -48,21 +54,54 @@ Shader "MyShader/XY"
 			o.normal = v.normal;
 			return o;
 		}
-		fixed SinFun(fixed _x) {
-			return (_Width*(sin(_x/_X + _Time.y*5)) - _Y );
+	
+		fixed Fun1(fixed _x) {
+			return sin(_x);
 		}
-		fixed EFun(fixed _x) {
-			return _X * exp(_Y*_x);
+		
+		fixed Fun2(fixed _x) {
+			return cos( _x ) ;
+		}
+	
+		fixed Fun3(fixed _x) {
+			return tan(_x);
+		}	
+		fixed Fun4(fixed _x) {
+			return exp(_x);
+		}
+		//test
+		fixed Fun5(fixed _x) {
+			
+			return pow(2,_x);
+		}
+		fixed crossLineX() {
+			return 0.5;
 		}
 		fixed4 frag(v2f i) : SV_Target
 		{ 
 			fixed4 col = tex2D(_MainTex, i.uv);
-		//for (int j = 0; j < 5; j++) {
-			//i.uv.y += ((_Y*sin((i.uv.x)*_X+1/7.0 + _Time.y))-0.5 );
-		i.uv.y += EFun(i.uv.x);
-			fixed w = abs(1 / (150*i.uv.y));
-			col += (fixed4(w, w, w, w)*_Color);
-		//}
+			fixed x = _Width * (i.uv.x-0.5) - _X*0.01;//减0.5是为了居中；乘0.01是为了将坐标系单位放大100倍
+			fixed y = Fun1(x);
+			if (_Type == 1) {
+				y = Fun2(x);
+			}
+			else if (_Type == 2) {
+				y = Fun3(x);
+			}
+			else if (_Type == 3) {
+				y = Fun4(x);
+			}
+			else if (_Type ==4) {
+				y = Fun5(x);
+			}
+			fixed temp = i.uv.y;
+			i.uv.y += -_Height*(y+_Y)*0.01;//乘0.01是为了将坐标系单位放大100倍
+			fixed w = abs(1 / (100*(i.uv.y-0.5)));//减0.5是为了居中
+			col += (fixed4(w, w, w, 1)*_Color);
+			w= abs(1 / (7000 * (temp- 0.5)));
+			col+= (fixed4(w, w, w, 1));
+			w = abs(1/(7000*(i.uv.x - 0.5)));
+			col += (fixed4(w, w, w, 1));
 			return col;
 		}
 		ENDCG
