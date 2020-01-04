@@ -11,6 +11,7 @@ Shader "MyShader/XY"
 		_Y("Y",float) = 0
 		_Width("Width",float) = 1
 		_Height("Height",float)=1
+		_Lamda("Lamda",float) = 1
 		_MainTex("Texture", 2D) = ""{}
 		_Color("Color",Color) = (1,1,1,1)
 		[Enum(SIN,0,COS,1,TAN,2,EXP,3,TEST,4)] _Type("CurveType", Float) = 4
@@ -27,6 +28,7 @@ Shader "MyShader/XY"
 		float _Y;
 		float _Width;
 		float _Height;
+		float _Lamda;
 		Float _Type;
 		fixed4 _Color;
 		sampler2D _MainTex;
@@ -72,7 +74,10 @@ Shader "MyShader/XY"
 		//test
 		fixed Fun5(fixed _x) {
 			
-			return pow(2,_x);
+			//return log10(_x);
+			//return pow(0.1,_x);
+			//return log(_x)+2*_x-6;
+			return (2 - 2 * _Lamda - (3 + 2 * _Lamda)*_x) / (4 + _Lamda);
 		}
 		fixed crossLineX() {
 			return 0.5;
@@ -98,7 +103,7 @@ Shader "MyShader/XY"
 			i.uv.y += -_Height*(y+_Y)*0.01;//乘0.01是为了将坐标系单位放大100倍
 			fixed w = abs(1 / (100*(i.uv.y-0.5)));//减0.5是为了居中
 			col += (fixed4(w, w, w, 1)*_Color);
-			w= abs(1 / (7000 * (temp- 0.5)));
+			w= abs(1 / (7000 * (temp - 0.5)));
 			col+= (fixed4(w, w, w, 1));
 			w = abs(1/(7000*(i.uv.x - 0.5)));
 			col += (fixed4(w, w, w, 1));
