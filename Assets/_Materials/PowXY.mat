@@ -81,8 +81,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Height: 1.9
-    - _Lamda: 20
+    - _Height: -2.82
+    - _Lamda: 10
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -92,9 +92,9 @@ Material:
     - _SrcBlend: 1
     - _Type: 4
     - _UVSec: 0
-    - _Width: 0
-    - _X: 50
-    - _Y: 100
+    - _Width: 0.3
+    - _X: 27
+    - _Y: 45.9
     - _ZWrite: 1
     m_Colors:
     - _CloudColor: {r: 0.7024846, g: 0, b: 1, a: 1}

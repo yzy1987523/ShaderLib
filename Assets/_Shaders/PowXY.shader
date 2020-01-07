@@ -57,8 +57,18 @@ Shader "MyShader/PowXY"
 			return o;
 		}
 		//圆或椭圆
+		fixed fun1(v2f i) {
+			fixed d = sqrt(abs(pow(_X*(i.uv.x - 0.5), 2) +_Height* pow(_Y*(i.uv.y - 0.5), 2)));
+			return 1 - (saturate(d - (_Lamda + _Width)) + saturate((_Lamda - _Width) - d));
+		}
+		//双曲线(有2对双曲线)
+		fixed fun0(v2f i) {
+			fixed d = sqrt(abs(pow(_X*(i.uv.x - 0.5), 2) - pow(_Y*(i.uv.y - 0.5), 2)));
+			return 1 - (saturate(d - (_Lamda + _Width)) + saturate((_Lamda - _Width) - d));
+		}
+		//抛物线
 		fixed fun(v2f i) {
-			fixed d = sqrt(abs(pow(_X*(i.uv.x - 0.5), 2) + pow(_Y*(i.uv.y - 0.5), 2)));
+			fixed d = 2 * _X*(i.uv.x - 0.5) - _Y*pow(i.uv.y - 0.5, 2);
 			return 1 - (saturate(d - (_Lamda + _Width)) + saturate((_Lamda - _Width) - d));
 		}
 		fixed4 frag(v2f i) : SV_Target
